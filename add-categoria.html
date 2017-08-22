@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="addCategoria">
+  <head>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+    <style>
+        .jumbotron{
+            width: 700px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+        .table{
+            margin-top: 20px;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+        .text-left{
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lista.js"></script>
+    <script>
+        var app = angular.module("addCategoria", []);
+        app.controller("ControllerCategoria", function($scope){
+            $scope.categorias = listaDeCategorias
+            $scope.adicionarCategoria = function(categoria){
+                listaDeCategorias.push(angular.copy(categoria));
+                $scope.categoria = "";
+            }
+        });
+    </script>  
+  </head>
+  <body ng-controller="ControllerCategoria">      
+    <div class="jumbotron">
+
+        <h4>{{pendentes}}</h4>
+        <div class="text-left">
+        <a class="btn btn-primary" href="index.html">voltar</a>
+        </div>
+        <input class="form-control" type="text" ng-model="categoria" placeholder="Add uma categoria"/>
+        <a class="btn btn-primary" ng-click="adicionarCategoria(categoria)" ng-disabled="!categoria">Add</a>
+        <table class="table table-striped">
+            <tr>
+                <th>Categoria Disponiveis</th>
+            </tr>
+            <tr ng-repeat="categoria in categorias" class="text-left">
+                <td>{{categoria}}</td>
+            </tr>
+        </table>
+        </hr>
+    <div>
+  </body>
+</html>

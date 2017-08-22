@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="addTarefa">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+    <style>
+        .jumbotron{
+            width: 700px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+        .table{
+            margin-top: 20px;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+        .text-left{
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lista.js"></script>
+    <script>
+        var app = angular.module("addTarefa", []);
+        app.controller("ControllerTarefa", function($scope){
+            $scope.categorias = listaDeCategorias;
+            $scope.tarefas = listaDeTarefas
+            $scope.adicionarTarefa = function(tarefa){
+                listaDeTarefas.push(angular.copy(tarefa));
+                tarefa.nome = "";
+                tarefa.categoria = "";
+            }
+        });
+    </script>  
+  </head>
+  <body ng-controller="ControllerTarefa">      
+    <div class="jumbotron">
+        <h4>{{pendentes}}</h4>
+        <div class="text-left">
+        <a class="btn btn-primary" href="index.html">voltar</a>
+        </div>
+        <input class="form-control" type="text" ng-model="tarefa.nome" placeholder="Add uma tarefa"/>
+        <select class="form-control" ng-model="tarefa.categoria" ng-options="categorias for categorias in categorias">
+			<option value="">Selecione uma categoria</option>
+		</select>
+        <a class="btn btn-primary" ng-click="adicionarTarefa(tarefa)" ng-disabled="!tarefa.nome || !tarefa.categoria">Add</a>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Lista de Tarefas</th>
+            </tr>
+            <tr ng-repeat="tarefa in tarefas" class="text-left">
+                <td>{{tarefa.nome}}  ( {{tarefa.categoria}} )</td>
+            </tr>
+        </table>
+        </hr>
+    <div>
+  </body>
+</html>
