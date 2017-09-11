@@ -1,0 +1,25 @@
+@import "../../app-css-globals.scss";
+
+navbar {
+  display: block;
+  
+  nav {
+    
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 455px){
+  .dropdown{
+    float: left; 
+  }
+  #botoes-nav{
+    display: none;
+  }
+}
+
+@media (min-width: 455px){
+  .dropdown{
+    display: none
+  }
+}

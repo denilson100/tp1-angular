@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Adicionar Tarefa</h1>
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="tarefa.nome" placeholder="Ex: Varrer casa"/>
+            </div>
+            <div class="form-group">
+                <select class="form-control" ng-model="tarefa.categoria" ng-options="categorias for categorias in $ctrl.categorias">
+                <option value="">Selecione uma categoria</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary"
+                  ng-click="$ctrl.adicionarTarefa(tarefa)"
+                  ng-disabled="!tarefa.nome || !tarefa.categoria">
+                  <span class="glyphicon glyphicon-plus"></span>  Adicionar
+                </button>
+            </div>
+            <div class="form-group">
+                <table class="table table-striped">
+                <tr>
+                    <th>Lista de Tarefas</th>
+                </tr>
+                <tr ng-repeat="tarefa in $ctrl.tarefas" class="text-left">
+                    <td>{{tarefa.nome}}  ( {{tarefa.categoria}} )</td>
+                </tr>
+            </table>
+            </div>
+        </form>
+        </div>

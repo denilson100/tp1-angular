@@ -1,0 +1,58 @@
+<main class="container">
+  <div>
+    <h1>Lista de Tarefas</h1>
+    <body>
+      <table class="table">
+            <!-- Inicio todas -->
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Todas</th>
+                    <th>Tarefa</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+             <tbody>
+                <tr ng-repeat="tarefa in $ctrl.listaDeTarefas "class="text-left">
+                    <td><input type="checkbox" ng-model="tarefa.feito"/></td>
+                    <td>{{tarefa.nome}}</td>
+                    <td>{{tarefa.categoria}}</td>
+                </tr>
+             </tbody>
+             <!-- fim todas -->
+             <!-- Inicio concluidas -->
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Concluida</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+             <tbody>
+                <tr ng-repeat='tarefa in $ctrl.listaDeTarefas | filter:{ feito: true }' class="text-left table-success">
+                    <td><input type="checkbox" ng-model="tarefa.feito"/></td>
+                    <td>{{tarefa.nome}}</td>
+                    <td>{{tarefa.categoria}}</td>
+                </tr>
+             </tbody>
+             <!-- fim concluidas -->
+             <!-- Inicio nao concluida -->
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Não Concluida</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+             <tbody>
+                <tr ng-repeat='tarefa in $ctrl.listaDeTarefas | filter:{ feito: false }' class="text-left table-danger">
+                    <td><input type="checkbox" ng-model="tarefa.feito"/></td>
+                    <td>{{tarefa.nome}}</td>
+                    <td>{{tarefa.categoria}}</td>
+                </tr>
+             </tbody>
+             <!-- fim nao concluidas -->
+        </table>
+
+  </body>
+  </div>
+</main>

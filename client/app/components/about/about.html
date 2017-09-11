@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Adicionar Categoria</h1>
+</div>
+<div class="container">
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="$ctrl.categoria" placeholder="Ex: Faculdade"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary"
+                  ng-click="$ctrl.addCategoria($ctrl.categoria)"
+                  ng-disabled="!$ctrl.categoria">
+                  <span class="glyphicon glyphicon-plus"></span>  Adicionar
+                </button>
+            </div>
+            <div class="form-group">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Categoria Disponiveis</th>
+                    </tr>
+                    <tr ng-repeat="categoria in $ctrl.listaDeCategorias" class="text-left">
+                        <td>{{categoria}}</td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+</div>
